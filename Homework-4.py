@@ -5,7 +5,8 @@ Image1 = input('What is the name of the first image?\n')
 
 Image2 = input('What is the name of the second image?\n')
 
-print("Good, now starting from the top left corner of the quadrat, moving clockwise, select the quadrat corners\n")
+print("Good, now starting from the top left corner of the quadrat, moving clockwise, select the quadrat corners"
+      "for each quadrat\n")
 
 print("Once you are done, click q\n")
 
