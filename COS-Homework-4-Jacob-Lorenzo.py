@@ -16,10 +16,10 @@ SourceImage = input("What is the name of the image?\n")
 
 # Provides instructions for what to do once the files have been found
 print(
-    "Good, now rotate the image so its in the proper orientation by pressing 1\n"
+    "Good, now rotate the image so its in the proper orientation by pressing r\n"
 )
 
-print("Once you are done, click 2\n")
+print("Once you are done, click q\n")
 
 # Sets up the variables that read the files from the given names
 # Source Image
@@ -43,18 +43,18 @@ def LeftClickSourceFunction(event, x, y, flags, param):
 cv.imshow("SourceImg", SourceImg)
 
 while True:
-
+    pressedKey = cv.waitKey(1) & 0xFF
     # Displays the source image and checks for left clicks
-    if cv.waitKey(1) & 0xFF == ord("1"):
+    if pressedKey == ord("r"):
         cv.destroyAllWindows()
         SourceImg = cv.rotate(SourceImg, cv.ROTATE_90_COUNTERCLOCKWISE)
         TransformedSource = cv.rotate(TransformedSource, cv.ROTATE_90_COUNTERCLOCKWISE)
         cv.imshow("SourceImg", SourceImg)
 
-    if cv.waitKey(1) & 0xFF == ord("2"):
+    elif pressedKey == ord("q"):
         cv.destroyAllWindows()
         print(
-            "Good, now starting with the top left corner, going clockwise, select the four corners of the quadrat, press 3 once you are done"
+            "Good, now starting with the top left corner, going clockwise, select the four corners of the quadrat, press q once you are done"
             "\n"
         )
         while True:
@@ -62,7 +62,7 @@ while True:
             cv.setMouseCallback("SourceImg", LeftClickSourceFunction)
 
             # Once the user presses q, then it moves to the transform of the images
-            if cv.waitKey(1) & 0xFF == ord("3"):
+            if cv.waitKey(1) & 0xFF == ord("q"):
                 cv.destroyAllWindows()
 
                 # These declare that they are floats
@@ -77,13 +77,13 @@ while True:
                     (int(SourceImg.shape[1]), int(SourceImg.shape[0])),
                 )
 
-                print("Once you are done viewing the PerspectiveWarpResult, press 4 to exit\n")
+                print("Once you are done viewing the PerspectiveWarpResult, press q to exit\n")
 
                 while True:
 
                     # Shows the transformation
-                    cv.imshow("perspectivee transformation", PerspectiveWarpResult)
+                    cv.imshow("perspective transformation", PerspectiveWarpResult)
 
                     # User can exit program with q
-                    if cv.waitKey(1) & 0xFF == ord("4"):
+                    if cv.waitKey(1) & 0xFF == ord("q"):
                         quit()
